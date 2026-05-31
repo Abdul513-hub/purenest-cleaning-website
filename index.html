@@ -4,295 +4,579 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PureNest Cleaning Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; color: #333; }
+body { font-family: 'Poppins', sans-serif; color: #1a1a2e; background: #fff; }
 
 /* NAVBAR */
 nav {
-  background: #1a73e8;
-  padding: 15px 30px;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(10px);
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 30px rgba(0,0,0,0.08);
 }
-nav h1 { color: white; font-size: 22px; }
-.nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-icon {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.logo h1 { font-size: 20px; font-weight: 700; color: #1a1a2e; }
+.logo span { color: #667eea; }
+.nav-links { display: flex; gap: 5px; }
 .nav-links a {
-  color: white;
+  color: #555;
   text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 5px;
+  padding: 8px 18px;
+  border-radius: 25px;
   font-size: 14px;
-  background: rgba(255,255,255,0.15);
+  font-weight: 500;
+  transition: all 0.3s;
 }
+.nav-links a:hover { background: #f0eeff; color: #667eea; }
 .social-nav { display: flex; gap: 8px; }
 .social-nav a {
-  padding: 8px 12px;
-  border-radius: 5px;
+  padding: 8px 16px;
+  border-radius: 25px;
   color: white;
   text-decoration: none;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 12px;
+  font-weight: 600;
+  transition: transform 0.2s;
+  display: flex; align-items: center; gap: 5px;
 }
-.ig { background: #E1306C; }
-.fb { background: #1877F2; }
-.wa { background: #25D366; }
+.social-nav a:hover { transform: translateY(-2px); }
+.ig { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.fb { background: linear-gradient(135deg, #4facfe, #1877F2); }
+.wa { background: linear-gradient(135deg, #43e97b, #25D366); }
 
 /* HERO */
 .hero {
-  background: linear-gradient(135deg, #1a73e8, #0d47a1);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   color: white;
+  padding: 100px 40px;
   text-align: center;
-  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
 }
-.hero h2 { font-size: 36px; margin-bottom: 15px; }
-.hero p { font-size: 18px; margin-bottom: 30px; opacity: 0.9; }
-.btn {
-  background: #4CAF50;
-  color: white;
-  padding: 15px 40px;
-  border: none;
-  border-radius: 30px;
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(102,126,234,0.15) 0%, transparent 60%);
+  animation: pulse 4s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+.hero-badge {
+  display: inline-block;
+  background: rgba(102,126,234,0.2);
+  border: 1px solid rgba(102,126,234,0.4);
+  color: #a78bfa;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 25px;
+  position: relative;
+}
+.hero h2 {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hero h2 span { 
+  background: linear-gradient(135deg, #667eea, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p {
   font-size: 18px;
+  opacity: 0.75;
+  margin-bottom: 40px;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  line-height: 1.7;
+}
+.hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: relative; }
+.btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+  transition: all 0.3s;
 }
-.btn:hover { background: #388E3C; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(102,126,234,0.5); }
+.btn-secondary {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  padding: 16px 40px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.2); transform: translateY(-3px); }
 
 /* STATS */
 .stats {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  padding: 40px 20px;
-  background: #f0f7ff;
+  gap: 0;
+  background: white;
   flex-wrap: wrap;
-  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  margin: 0 40px;
+  border-radius: 20px;
+  margin-top: -40px;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
 }
-.stat-item h3 { font-size: 36px; color: #1a73e8; }
-.stat-item p { color: #666; font-size: 14px; }
+.stat-item {
+  flex: 1;
+  min-width: 150px;
+  padding: 30px 20px;
+  text-align: center;
+  border-right: 1px solid #f0f0f0;
+}
+.stat-item:last-child { border-right: none; }
+.stat-item h3 {
+  font-size: 36px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-item p { color: #888; font-size: 13px; font-weight: 500; margin-top: 5px; }
 
 /* SERVICES */
 .services {
-  padding: 60px 20px;
-  text-align: center;
-  background: white;
+  padding: 100px 40px;
+  background: #fafafa;
 }
-.services h2 { font-size: 30px; margin-bottom: 10px; color: #1a73e8; }
-.services .subtitle { color: #666; margin-bottom: 40px; }
-.category-title {
-  font-size: 22px;
-  color: #0d47a1;
-  margin: 30px 0 15px;
-  border-bottom: 2px solid #1a73e8;
-  padding-bottom: 8px;
-  text-align: left;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  max-width: 1000px;
-  margin: 0 auto 20px;
-}
-.card {
-  background: #f9f9f9;
-  border-radius: 12px;
-  padding: 25px;
-  width: 280px;
-  text-align: left;
-  border: 1px solid #e0e0e0;
-  position: relative;
-}
-.card h4 { font-size: 17px; margin-bottom: 8px; color: #333; }
-.card p { font-size: 13px; color: #666; margin-bottom: 15px; }
-.card .price {
-  font-size: 22px;
-  font-weight: bold;
-  color: #4CAF50;
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-tag {
+  display: inline-block;
+  background: #f0eeff;
+  color: #667eea;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
   margin-bottom: 15px;
 }
-.card .book-btn {
-  background: #1a73e8;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 14px;
-  text-decoration: none;
-  display: inline-block;
+.section-header h2 {
+  font-size: 38px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 12px;
 }
+.section-header p { color: #888; font-size: 16px; max-width: 500px; margin: 0 auto; }
+
+.category-block { margin-bottom: 60px; }
+.category-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+.category-label .cat-icon {
+  width: 45px; height: 45px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.home-icon { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+.office-icon { background: linear-gradient(135deg, #a1c4fd, #c2e9fb); }
+.special-icon { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
+.category-label h3 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+.category-label .cat-line { flex: 1; height: 1px; background: linear-gradient(90deg, #e0e0e0, transparent); }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid #f0f0f0;
+  position: relative;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(102,126,234,0.15); }
+.card:hover::before { opacity: 1; }
 .badge {
   position: absolute;
-  top: -10px;
-  right: 15px;
-  background: #FF5722;
+  top: 20px; right: 20px;
+  background: linear-gradient(135deg, #f093fb, #f5576c);
   color: white;
-  font-size: 11px;
-  padding: 4px 10px;
-  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
+.card-icon { font-size: 32px; margin-bottom: 15px; }
+.card h4 { font-size: 17px; font-weight: 700; color: #1a1a2e; margin-bottom: 10px; }
+.card p { font-size: 13px; color: #888; line-height: 1.7; margin-bottom: 20px; }
+.card .price {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+.card .price span { font-size: 14px; color: #aaa; font-weight: 400; -webkit-text-fill-color: #aaa; }
+.book-btn {
+  display: block;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 5px 20px rgba(102,126,234,0.3);
+}
+.book-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102,126,234,0.4); }
+.quote-btn {
+  display: block;
+  text-align: center;
+  background: transparent;
+  color: #667eea;
+  border: 2px solid #667eea;
+  padding: 12px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.quote-btn:hover { background: #667eea; color: white; }
 
 /* BEFORE AFTER */
 .before-after {
-  background: #f0f7ff;
-  padding: 60px 20px;
-  text-align: center;
+  padding: 100px 40px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
 }
-.before-after h2 { font-size: 30px; color: #1a73e8; margin-bottom: 10px; }
-.before-after .subtitle { color: #666; margin-bottom: 40px; }
-.ba-cards {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+.before-after .section-header h2 { color: white; }
+.before-after .section-header p { color: rgba(255,255,255,0.6); }
+.ba-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 .ba-card {
-  width: 300px;
-  border-radius: 12px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.3s;
 }
+.ba-card:hover { transform: translateY(-8px); }
 .ba-top {
   display: flex;
-  height: 160px;
+  height: 200px;
+  position: relative;
 }
 .before-side {
   flex: 1;
-  background: #5a5a5a;
+  background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  font-weight: 600;
 }
+.before-side .big-icon { font-size: 36px; filter: grayscale(1) opacity(0.5); }
 .after-side {
   flex: 1;
-  background: #e8f5e9;
+  background: linear-gradient(135deg, #1a2a1a, #0d3320);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2e7d32;
-  font-weight: bold;
-  font-size: 14px;
   flex-direction: column;
-  gap: 5px;
-  border-left: 3px solid white;
+  gap: 8px;
+  color: #43e97b;
+  font-size: 13px;
+  font-weight: 600;
 }
-.before-side span { font-size: 24px; }
-.after-side span { font-size: 24px; }
-.ba-label {
+.after-side .big-icon { font-size: 36px; }
+.divider {
+  position: absolute;
+  left: 50%; top: 0;
+  width: 3px; height: 100%;
   background: white;
-  padding: 12px;
-  font-weight: bold;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+.divider::after {
+  content: '↔';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
   color: #333;
-  font-size: 14px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+.ba-bottom {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ba-bottom h4 { font-size: 15px; font-weight: 600; }
+.ba-tag {
+  background: rgba(102,126,234,0.2);
+  color: #a78bfa;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 /* ABOUT */
 .about {
-  padding: 60px 20px;
-  text-align: center;
+  padding: 100px 40px;
   background: white;
-  max-width: 800px;
+}
+.about-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.about-text h2 { font-size: 38px; font-weight: 800; color: #1a1a2e; margin-bottom: 20px; line-height: 1.3; }
+.about-text h2 span { color: #667eea; }
+.about-text p { color: #666; line-height: 1.8; font-size: 15px; margin-bottom: 25px; }
+.about-features { display: flex; flex-direction: column; gap: 15px; }
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  background: #fafafa;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+}
+.feature-icon {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.feature-item p { color: #555; font-size: 14px; font-weight: 500; }
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.about-stat {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  color: white;
+}
+.about-stat h3 { font-size: 36px; font-weight: 800; }
+.about-stat p { font-size: 13px; opacity: 0.8; margin-top: 5px; }
+.about-stat:nth-child(2) { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+.about-stat:nth-child(3) { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.about-stat:nth-child(4) { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+
+/* CONTACT */
+.contact {
+  padding: 100px 40px;
+  background: #fafafa;
+}
+.contact-inner {
+  max-width: 650px;
   margin: 0 auto;
 }
-.about h2 { font-size: 30px; color: #1a73e8; margin-bottom: 20px; }
-.about p { color: #555; line-height: 1.8; font-size: 15px; }
-
-/* CONTACT FORM */
-.contact {
-  background: #f0f7ff;
-  padding: 60px 20px;
-  text-align: center;
-}
-.contact h2 { font-size: 30px; color: #1a73e8; margin-bottom: 10px; }
-.contact .subtitle { color: #666; margin-bottom: 30px; }
 .form-box {
   background: white;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  text-align: left;
+  border-radius: 24px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  border: 1px solid #f0f0f0;
 }
-.form-box input,
-.form-box select,
-.form-box textarea {
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
   width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 14px 18px;
+  border: 2px solid #f0f0f0;
+  border-radius: 12px;
   font-size: 14px;
+  font-family: 'Poppins', sans-serif;
   outline: none;
+  transition: border-color 0.3s;
+  background: #fafafa;
+  color: #333;
 }
-.form-box textarea { height: 100px; resize: vertical; }
-.form-box button {
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #667eea;
+  background: white;
+}
+.form-group textarea { height: 110px; resize: vertical; }
+.submit-btn {
   width: 100%;
-  padding: 15px;
-  background: #4CAF50;
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
   border: none;
-  border-radius: 30px;
+  border-radius: 50px;
   font-size: 16px;
+  font-weight: 700;
   cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+  transition: all 0.3s;
 }
+.submit-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(102,126,234,0.5); }
 .success-msg {
   display: none;
-  background: #e8f5e9;
-  color: #2e7d32;
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 15px;
+  background: linear-gradient(135deg, #d4fc79, #96e6a1);
+  color: #1a5c1a;
+  padding: 18px;
+  border-radius: 12px;
+  margin-top: 20px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 /* FOOTER */
 footer {
-  background: #0d47a1;
+  background: #0d0d1a;
   color: white;
-  padding: 40px 20px;
-  text-align: center;
+  padding: 60px 40px 30px;
 }
-footer h3 { font-size: 20px; margin-bottom: 10px; }
-footer p { opacity: 0.8; font-size: 14px; margin-bottom: 5px; }
-.footer-social {
+.footer-top {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.footer-social a {
-  padding: 8px 16px;
-  border-radius: 20px;
+.footer-brand h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+.footer-brand h3 span { color: #a78bfa; }
+.footer-brand p { color: rgba(255,255,255,0.5); font-size: 14px; max-width: 250px; line-height: 1.7; }
+.footer-info h4 { font-size: 15px; font-weight: 600; margin-bottom: 15px; color: #a78bfa; }
+.footer-info p { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 8px; }
+.footer-social-section h4 { font-size: 15px; font-weight: 600; margin-bottom: 15px; color: #a78bfa; }
+.footer-socials { display: flex; flex-direction: column; gap: 10px; }
+.footer-socials a {
+  padding: 10px 18px;
+  border-radius: 25px;
   color: white;
   text-decoration: none;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s;
+  width: fit-content;
 }
-.copy { opacity: 0.6; font-size: 12px; margin-top: 20px; }
+.footer-socials a:hover { transform: translateX(5px); }
+.footer-bottom {
+  text-align: center;
+  color: rgba(255,255,255,0.3);
+  font-size: 13px;
+}
 
 /* RESPONSIVE */
-@media(max-width: 600px) {
-  .hero h2 { font-size: 24px; }
-  .cards { flex-direction: column; align-items: center; }
-  .ba-cards { flex-direction: column; align-items: center; }
-  .stats { flex-direction: column; gap: 20px; }
+@media(max-width: 768px) {
+  .hero h2 { font-size: 32px; }
+  .stats { margin: -20px 20px 0; }
+  .about-inner { grid-template-columns: 1fr; gap: 40px; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-box { padding: 30px 20px; }
+  nav { padding: 15px 20px; }
+  .services, .before-after, .about, .contact { padding: 60px 20px; }
 }
 </style>
 </head>
@@ -300,9 +584,13 @@ footer p { opacity: 0.8; font-size: 14px; margin-bottom: 5px; }
 
 <!-- NAVBAR -->
 <nav>
-  <h1>✨ PureNest Cleaning Co.</h1>
+  <div class="logo">
+    <div class="logo-icon">✨</div>
+    <h1>Pure<span>Nest</span></h1>
+  </div>
   <div class="nav-links">
     <a href="#services">Services</a>
+    <a href="#results">Results</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </div>
@@ -315,188 +603,326 @@ footer p { opacity: 0.8; font-size: 14px; margin-bottom: 5px; }
 
 <!-- HERO -->
 <section class="hero">
-  <h2>Professional Cleaning Services You Can Trust</h2>
-  <p>From homes to offices, PureNest delivers spotless results every time</p>
-  <a href="#contact" class="btn">📅 Book Now</a>
+  <div class="hero-badge">⭐ Rated #1 Cleaning Service in the City</div>
+  <h2>We Make Your Space<br><span>Spotlessly Clean</span></h2>
+  <p>Professional, eco-friendly cleaning for homes and offices. Trusted by 500+ happy clients since 2018.</p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">📅 Book a Cleaning</a>
+    <a href="#services" class="btn-secondary">🔍 View Services</a>
+  </div>
 </section>
 
 <!-- STATS -->
 <section class="stats">
-  <div class="stat-item">
-    <h3>500+</h3>
-    <p>Happy Clients</p>
-  </div>
-  <div class="stat-item">
-    <h3>6 Years</h3>
-    <p>Experience</p>
-  </div>
-  <div class="stat-item">
-    <h3>100%</h3>
-    <p>Eco Friendly</p>
-  </div>
-  <div class="stat-item">
-    <h3>4.9 ⭐</h3>
-    <p>Average Rating</p>
-  </div>
+  <div class="stat-item"><h3>500+</h3><p>Happy Clients</p></div>
+  <div class="stat-item"><h3>6 Yrs</h3><p>Experience</p></div>
+  <div class="stat-item"><h3>100%</h3><p>Eco Friendly</p></div>
+  <div class="stat-item"><h3>4.9 ⭐</h3><p>Average Rating</p></div>
 </section>
 
 <!-- SERVICES -->
 <section class="services" id="services">
-  <h2>Our Services</h2>
-  <p class="subtitle">Professional cleaning solutions for every need</p>
+  <div class="section-header">
+    <div class="section-tag">What We Offer</div>
+    <h2>Our Cleaning Services</h2>
+    <p>Professional solutions tailored to every space and budget</p>
+  </div>
 
-  <div class="category-title">🏠 Home Cleaning</div>
-  <div class="cards">
-    <div class="card">
-      <h4>Basic Home Clean</h4>
-      <p>Vacuuming, mopping, dusting, kitchen wipe down and bathroom clean. Perfect for weekly maintenance.</p>
-      <div class="price">$79</div>
-      <a href="#contact" class="book-btn">Book Now</a>
+  <!-- Home Cleaning -->
+  <div class="category-block">
+    <div class="category-label">
+      <div class="cat-icon home-icon">🏠</div>
+      <h3>Home Cleaning</h3>
+      <div class="cat-line"></div>
     </div>
-    <div class="card">
-      <span class="badge">Most Popular</span>
-      <h4>Deep Home Clean</h4>
-      <p>Everything in basic plus inside appliances, baseboards, window sills and detailed bathroom scrub.</p>
-      <div class="price">$149</div>
-      <a href="#contact" class="book-btn">Book Now</a>
-    </div>
-    <div class="card">
-      <h4>Move In / Move Out</h4>
-      <p>Full top to bottom clean for empty homes. Includes inside cabinets, oven, fridge and all surfaces.</p>
-      <div class="price">$219</div>
-      <a href="#contact" class="book-btn">Book Now</a>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🧹</div>
+        <h4>Basic Home Clean</h4>
+        <p>Vacuuming, mopping, dusting, kitchen wipe down and bathroom clean. Perfect for weekly maintenance.</p>
+        <div class="price">$79 <span>/ visit</span></div>
+        <a href="#contact" class="book-btn">Book Now</a>
+      </div>
+      <div class="card">
+        <span class="badge">Most Popular</span>
+        <div class="card-icon">🏡</div>
+        <h4>Deep Home Clean</h4>
+        <p>Everything in basic plus inside appliances, baseboards, window sills and detailed bathroom scrub.</p>
+        <div class="price">$149 <span>/ visit</span></div>
+        <a href="#contact" class="book-btn">Book Now</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <h4>Move In / Move Out</h4>
+        <p>Full top to bottom clean for empty homes. Includes inside cabinets, oven, fridge and all surfaces.</p>
+        <div class="price">$219 <span>/ visit</span></div>
+        <a href="#contact" class="book-btn">Book Now</a>
+      </div>
     </div>
   </div>
 
-  <div class="category-title">🏢 Office Cleaning</div>
-  <div class="cards">
-    <div class="card">
-      <h4>Small Office</h4>
-      <p>Up to 10 desks. Desk wipe down, vacuuming, trash removal, kitchen and bathroom clean.</p>
-      <div class="price">$99</div>
-      <a href="#contact" class="book-btn">Book Now</a>
+  <!-- Office Cleaning -->
+  <div class="category-block">
+    <div class="category-label">
+      <div class="cat-icon office-icon">🏢</div>
+      <h3>Office Cleaning</h3>
+      <div class="cat-line"></div>
     </div>
-    <div class="card">
-      <h4>Medium Office</h4>
-      <p>Up to 30 desks. Full office clean including meeting rooms, reception area and all bathrooms.</p>
-      <div class="price">$179</div>
-      <a href="#contact" class="book-btn">Book Now</a>
-    </div>
-    <div class="card">
-      <h4>Corporate Package</h4>
-      <p>Tailored cleaning plan for large offices and commercial spaces. Contact us for a free quote.</p>
-      <div class="price">Custom</div>
-      <a href="#contact" class="book-btn">Get Free Quote</a>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <h4>Small Office</h4>
+        <p>Up to 10 desks. Desk wipe down, vacuuming, trash removal, kitchen and bathroom clean.</p>
+        <div class="price">$99 <span>/ visit</span></div>
+        <a href="#contact" class="book-btn">Book Now</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏬</div>
+        <h4>Medium Office</h4>
+        <p>Up to 30 desks. Full office clean including meeting rooms, reception area and all bathrooms.</p>
+        <div class="price">$179 <span>/ visit</span></div>
+        <a href="#contact" class="book-btn">Book Now</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏙️</div>
+        <h4>Corporate Package</h4>
+        <p>Tailored cleaning plan for large offices and commercial spaces. Contact us for a free quote.</p>
+        <div class="price">Custom</div>
+        <a href="#contact" class="quote-btn">Get Free Quote</a>
+      </div>
     </div>
   </div>
 
-  <div class="category-title">⭐ Specialist Cleaning</div>
-  <div class="cards">
-    <div class="card">
-      <h4>Carpet & Sofa Steam</h4>
-      <p>Deep steam cleaning removes stains, odors and allergens from carpets and upholstery.</p>
-      <div class="price">$89</div>
-      <a href="#contact" class="book-btn">Book Now</a>
+  <!-- Specialist -->
+  <div class="category-block">
+    <div class="category-label">
+      <div class="cat-icon special-icon">⭐</div>
+      <h3>Specialist Cleaning</h3>
+      <div class="cat-line"></div>
     </div>
-    <div class="card">
-      <h4>Window Cleaning</h4>
-      <p>Streak free interior and exterior window cleaning for homes and offices.</p>
-      <div class="price">$59</div>
-      <a href="#contact" class="book-btn">Book Now</a>
-    </div>
-    <div class="card">
-      <h4>Post Construction</h4>
-      <p>Heavy duty cleaning after renovation. Removes dust, debris and construction residue.</p>
-      <div class="price">$279</div>
-      <a href="#contact" class="book-btn">Book Now</a>
-    </div>
-    <div class="card">
-      <h4>Airbnb Turnover</h4>
-      <p>Fast professional clean between guests. Fresh linens setup and restock included.</p>
-      <div class="price">$109</div>
-      <a href="#contact" class="book-btn">Book Now</a>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🛋️</div>
+        <h4>Carpet & Sofa Steam</h4>
+        <p>Deep steam cleaning removes stains, odors and allergens from carpets and upholstery.</p>
+        <div class="price">$89 <span>/ visit</span></div>
+        <a href="#contact" class="book-btn">Book Now</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🪟</div>
+        <h4>Window Cleaning</h4>
+        <p>Streak free interior and exterior window cleaning for homes and offices.</p>
+        <div class="price">$59 <span>/ visit</span></div>
+        <a href="#contact" class="book-btn">Book Now</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <h4>Post Construction</h4>
+        <p>Heavy duty cleaning after renovation. Removes dust, debris and construction residue.</p>
+        <div class="price">$279 <span>/ visit</span></div>
+        <a href="#contact" class="book-btn">Book Now</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏠</div>
+        <h4>Airbnb Turnover</h4>
+        <p>Fast professional clean between guests. Fresh linens setup and restock included.</p>
+        <div class="price">$109 <span>/ visit</span></div>
+        <a href="#contact" class="book-btn">Book Now</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- BEFORE AFTER -->
-<section class="before-after">
-  <h2>See The PureNest Difference</h2>
-  <p class="subtitle">Real results from our professional team</p>
-  <div class="ba-cards">
+<section class="before-after" id="results">
+  <div class="section-header">
+    <div class="section-tag" style="background:rgba(102,126,234,0.2);color:#a78bfa">Our Results</div>
+    <h2>See The PureNest Difference</h2>
+    <p>Real transformations from our professional team</p>
+  </div>
+  <div class="ba-grid">
     <div class="ba-card">
       <div class="ba-top">
-        <div class="before-side"><span>🍳</span>Before</div>
-        <div class="after-side"><span>✨</span>After</div>
+        <div class="before-side">
+          <div class="big-icon">🍳</div>
+          <span>BEFORE</span>
+        </div>
+        <div class="divider"></div>
+        <div class="after-side">
+          <div class="big-icon">✨</div>
+          <span>AFTER</span>
+        </div>
       </div>
-      <div class="ba-label">Kitchen Deep Clean</div>
+      <div class="ba-bottom">
+        <h4>Kitchen Deep Clean</h4>
+        <span class="ba-tag">Home Clean</span>
+      </div>
     </div>
     <div class="ba-card">
       <div class="ba-top">
-        <div class="before-side"><span>🚿</span>Before</div>
-        <div class="after-side"><span>✨</span>After</div>
+        <div class="before-side">
+          <div class="big-icon">🚿</div>
+          <span>BEFORE</span>
+        </div>
+        <div class="divider"></div>
+        <div class="after-side">
+          <div class="big-icon">✨</div>
+          <span>AFTER</span>
+        </div>
       </div>
-      <div class="ba-label">Bathroom Refresh</div>
+      <div class="ba-bottom">
+        <h4>Bathroom Refresh</h4>
+        <span class="ba-tag">Deep Clean</span>
+      </div>
     </div>
     <div class="ba-card">
       <div class="ba-top">
-        <div class="before-side"><span>🛋️</span>Before</div>
-        <div class="after-side"><span>✨</span>After</div>
+        <div class="before-side">
+          <div class="big-icon">🛋️</div>
+          <span>BEFORE</span>
+        </div>
+        <div class="divider"></div>
+        <div class="after-side">
+          <div class="big-icon">✨</div>
+          <span>AFTER</span>
+        </div>
       </div>
-      <div class="ba-label">Carpet Cleaning</div>
+      <div class="ba-bottom">
+        <h4>Sofa Steam Clean</h4>
+        <span class="ba-tag">Specialist</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section class="about" id="about">
-  <h2>About PureNest Cleaning Co.</h2>
-  <p>Founded in 2018, PureNest Cleaning Co. has been transforming homes and offices across the city. Our team of trained, background-checked professionals use eco-friendly products to deliver outstanding results every single time. We are fully insured, reliable, and passionate about cleanliness. Your satisfaction is our guarantee.</p>
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="section-tag">Who We Are</div>
+      <h2>Cleaning Experts You Can <span>Trust</span></h2>
+      <p>Founded in 2018, PureNest Cleaning Co. has been transforming homes and offices across the city. Our trained, background-checked professionals use eco-friendly products for outstanding results every time.</p>
+      <div class="about-features">
+        <div class="feature-item">
+          <div class="feature-icon">🌿</div>
+          <p>100% eco-friendly, safe for kids and pets</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🛡️</div>
+          <p>Fully insured and background-checked team</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">⚡</div>
+          <p>Same-day service available on request</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">💯</div>
+          <p>100% satisfaction guarantee or we reclean free</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="about-stat"><h3>500+</h3><p>Happy Clients</p></div>
+      <div class="about-stat"><h3>6+</h3><p>Years Experience</p></div>
+      <div class="about-stat"><h3>4.9⭐</h3><p>Average Rating</p></div>
+      <div class="about-stat"><h3>100%</h3><p>Eco Friendly</p></div>
+    </div>
+  </div>
 </section>
 
-<!-- CONTACT FORM -->
+<!-- CONTACT -->
 <section class="contact" id="contact">
-  <h2>Book a Cleaning</h2>
-  <p class="subtitle">Fill in the form and we will contact you within 2 hours</p>
-  <div class="form-box">
-    <input type="text" placeholder="Full Name" id="name">
-    <input type="tel" placeholder="Phone Number" id="phone">
-    <input type="email" placeholder="Email Address" id="email">
-    <select id="service">
-      <option value="">Select a Service</option>
-      <option>Basic Home Clean — $79</option>
-      <option>Deep Home Clean — $149</option>
-      <option>Move In / Move Out — $219</option>
-      <option>Small Office — $99</option>
-      <option>Medium Office — $179</option>
-      <option>Corporate Package — Custom</option>
-      <option>Carpet & Sofa Steam — $89</option>
-      <option>Window Cleaning — $59</option>
-      <option>Post Construction — $279</option>
-      <option>Airbnb Turnover — $109</option>
-    </select>
-    <input type="date" id="date">
-    <input type="time" id="time">
-    <textarea placeholder="Special Instructions (optional)" id="notes"></textarea>
-    <button onclick="submitForm()">Request Booking</button>
-    <div class="success-msg" id="successMsg">
-      ✅ Thank you! PureNest will contact you within 2 hours.
+  <div class="section-header">
+    <div class="section-tag">Get In Touch</div>
+    <h2>Book Your Cleaning</h2>
+    <p>Fill in the form and we will contact you within 2 hours</p>
+  </div>
+  <div class="contact-inner">
+    <div class="form-box">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="John Smith" id="name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+1 555 000 0000" id="phone">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="john@example.com" id="email">
+      </div>
+      <div class="form-group">
+        <label>Select Service</label>
+        <select id="service">
+          <option value="">Choose a service...</option>
+          <optgroup label="🏠 Home Cleaning">
+            <option>Basic Home Clean — $79</option>
+            <option>Deep Home Clean — $149</option>
+            <option>Move In / Move Out — $219</option>
+          </optgroup>
+          <optgroup label="🏢 Office Cleaning">
+            <option>Small Office — $99</option>
+            <option>Medium Office — $179</option>
+            <option>Corporate Package — Custom</option>
+          </optgroup>
+          <optgroup label="⭐ Specialist">
+            <option>Carpet & Sofa Steam — $89</option>
+            <option>Window Cleaning — $59</option>
+            <option>Post Construction — $279</option>
+            <option>Airbnb Turnover — $109</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date" id="date">
+        </div>
+        <div class="form-group">
+          <label>Preferred Time</label>
+          <input type="time" id="time">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Special Instructions</label>
+        <textarea placeholder="Any specific requirements or notes..." id="notes"></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">✨ Request Booking</button>
+      <div class="success-msg" id="successMsg">
+        🎉 Thank you! PureNest will contact you within 2 hours.
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <h3>✨ PureNest Cleaning Co.</h3>
-  <p>📞 +1 (555) 123-4567</p>
-  <p>📧 hello@purestnest.com</p>
-  <p>🕐 Mon-Sat 8am to 7pm</p>
-  <div class="footer-social">
-    <a href="https://instagram.com/purestnestcleaning" class="ig">📷 Instagram</a>
-    <a href="https://facebook.com/purestnestcleaning" class="fb">👍 Facebook</a>
-    <a href="https://wa.me/15551234567" class="wa">💬 WhatsApp</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3>✨ Pure<span>Nest</span></h3>
+      <p>Professional cleaning services you can trust. Eco-friendly, reliable and thorough.</p>
+    </div>
+    <div class="footer-info">
+      <h4>Contact Us</h4>
+      <p>📞 +1 (555) 123-4567</p>
+      <p>📧 hello@purestnest.com</p>
+      <p>📍 Your City, State</p>
+      <p>🕐 Mon–Sat: 8am – 7pm</p>
+    </div>
+    <div class="footer-social-section">
+      <h4>Follow Us</h4>
+      <div class="footer-socials">
+        <a href="https://instagram.com/purestnestcleaning" class="ig">📷 Instagram</a>
+        <a href="https://facebook.com/purestnestcleaning" class="fb">👍 Facebook</a>
+        <a href="https://wa.me/15551234567" class="wa">💬 WhatsApp</a>
+      </div>
+    </div>
   </div>
-  <p class="copy">© 2026 PureNest Cleaning Co. All rights reserved.</p>
+  <div class="footer-bottom">
+    <p>© 2026 PureNest Cleaning Co. All rights reserved. Built with ❤️</p>
+  </div>
 </footer>
 
 <script>
@@ -510,8 +936,10 @@ function submitForm() {
     return;
   }
   document.getElementById('successMsg').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('successMsg').style.display = 'none';
+  }, 5000);
 }
 </script>
-
 </body>
 </html>
